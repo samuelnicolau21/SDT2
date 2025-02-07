@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package dispositivos;
+
+service LampadaService {
+  rpc LigarDesligar(LigarDesligarRequest) returns (StatusResponse);
+  rpc Brilho(BrilhoRequest) returns (StatusResponse);
+}
+
+
+service TelevisaoService {
+  rpc LigarDesligar(LigarDesligarRequest) returns (StatusResponse);
+  rpc Canal(CanalRequest) returns (StatusResponse);
+}
+
+service ArCondicionadoService {
+  rpc LigarDesligar(LigarDesligarRequest) returns (StatusResponse);
+  rpc Temperatura(TemperaturaRequest) returns (StatusResponse);
+}
+
+message LigarDesligarRequest {
+  bool interruptor = 1;
+}
+
+message StatusResponse {
+  string status = 1;
+}
+
+message BrilhoRequest {
+  int32 brilho = 1;
+}
+
+message CanalRequest {
+  int32 canalEscolhido = 1;
+}
+
+message TemperaturaRequest {
+  int32 temperaturaEscolhida = 1;
+}
+
+
+
