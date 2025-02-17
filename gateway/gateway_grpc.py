@@ -1,4 +1,9 @@
 import grpc
+import sys
+import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import dispositivos.arquivos_pb2.servicos_dispositivos_pb2 as response_request
 import dispositivos.arquivos_pb2.servicos_dispositivos_pb2_grpc as services
 from google.protobuf.descriptor import FieldDescriptor  # Para mapear tipos
@@ -89,8 +94,8 @@ class GRPCClient:
     é importante que os nomes sigam essa exata grafia
     
 """
-disp_list=[('lampada','lampada00','10.102.134.99',52692),('televisao','televisao00','10.102.134.99',52695),
-           ('ar-condicionado','ar-condicionado00','10.102.134.99',52688)]
+disp_list=[('lampada','lampada00','localhost',52164),('televisao','televisao00','localhost',52168),
+           ('ar-condicionado','ar-condicionado00','localhost',52176)]
 
 def menu(disp_list):
     print("Escolha o dispositivo que deseja usar:")
@@ -119,6 +124,10 @@ if __name__ == '__main__':
                 response = client.call_method('Brilho', request)
                 print(response.status) 
                 client.close()
+            elif method=="ConsultarEstado":
+                response = client.call_method('ConsultarEstado', response_request.EmptyRequest())
+                print(f"Estado: {'Ligado' if response.ligada else 'Desligado'}, Brilho Atual: {response.brilho}")
+                client.close()
         
         if choosed_disp[0]=="televisao":
             client.set_service(services.TelevisaoServiceStub)
@@ -133,7 +142,13 @@ if __name__ == '__main__':
                 request = client.set_entries(method)
                 response = client.call_method('Canal', request)
                 print(response.status) 
-                client.close()
+                client.close()         
+            elif method=="ConsultarEstado":
+                response = client.call_method('ConsultarEstado', response_request.EmptyRequest())
+                print(f"Estado: {'Ligado' if response.ligada else 'Desligado'}, Canal Atual: {response.canalAtual}")
+                client.close()                
+                
+
         if choosed_disp[0]=="ar-condicionado":
             client.set_service(services.ArCondicionadoServiceStub)
             method=client.set_method()
@@ -147,4 +162,8 @@ if __name__ == '__main__':
                 request = client.set_entries(method)
                 response = client.call_method('Temperatura', request)
                 print(response.status) 
+                client.close()
+            elif method=="ConsultarEstado":
+                response = client.call_method('ConsultarEstado', response_request.EmptyRequest())
+                print(f"Estado: {'Ligado' if response.ligado else 'Desligado'}, Temperatura Atual: {response.temperaturaAtual}")
                 client.close()

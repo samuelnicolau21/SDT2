@@ -32,6 +32,8 @@ class TelevisaoService(services.TelevisaoServiceServicer):
         global canal 
         canal = request.canalEscolhido
         return response_request.StatusResponse(status=f"Canal alterado para {canal}")
+    def ConsultarEstado(self, request, context):
+        return response_request.TelevisaoEstadoResponse(ligada=(estado == "ligado"), canalAtual=canal)
 
     
 def serve():

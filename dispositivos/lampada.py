@@ -8,7 +8,7 @@ ip_gateway = ""
 porta_gateway = 0
 ip_broker = ""
 porta_broker = 0
-ip = "192.168.1.5"
+ip = "localhost"
 porta = 0
 
 _id = "lampada00"
@@ -22,13 +22,19 @@ class LampadaService(services.LampadaServiceServicer):
 
     def LigarDesligar(self, request, context):
         global estado
-        estado = "ligado" if estado == "desligado" else "desligado"
+        if estado=="desligado":
+            estado="ligado"
+        else:
+            estado="desligado"    
         return response_request.StatusResponse(status=f"Estado alterado para {estado}")
 
     def Brilho(self, request, context):
         global brilho
         brilho = request.brilho
         return response_request.StatusResponse(status=f"Brilho alterado para {brilho}")
+    def ConsultarEstado(self, request, context):
+        return response_request.LampadaEstadoResponse(ligada=(estado == "ligado"), brilho=brilho)
+    
 
 def serve():
     global porta

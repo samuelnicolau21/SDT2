@@ -16,8 +16,6 @@ estado="desligado"
 temperatura=24
 temperatura_ambiente=24
 
-
-
 class ArCondicionadoService(services.ArCondicionadoServiceServicer):
     
     def LigarDesligar(self, request, context):
@@ -32,6 +30,9 @@ class ArCondicionadoService(services.ArCondicionadoServiceServicer):
         global temperatura 
         temperatura = request.temperaturaEscolhida
         return response_request.StatusResponse(status=f"Temperatura alterada para {temperatura}")
+    
+    def ConsultarEstado(self, request, context):
+        return response_request.ArCondicionadoEstadoResponse(ligado=(estado == "ligado"), temperaturaAtual=temperatura)
 
     
 def serve():
@@ -43,5 +44,6 @@ def serve():
     server.start()
     print(f"Servidor {_id} rodando na porta {porta}...")
     server.wait_for_termination()
+
 if __name__ == '__main__':
     serve()
