@@ -5,17 +5,19 @@ package dispositivos;
 service LampadaService {
   rpc LigarDesligar(LigarDesligarRequest) returns (StatusResponse);
   rpc Brilho(BrilhoRequest) returns (StatusResponse);
+  rpc ConsultarEstado(EmptyRequest) returns (LampadaEstadoResponse);
 }
-
 
 service TelevisaoService {
   rpc LigarDesligar(LigarDesligarRequest) returns (StatusResponse);
   rpc Canal(CanalRequest) returns (StatusResponse);
+  rpc ConsultarEstado(EmptyRequest) returns (TelevisaoEstadoResponse);
 }
 
 service ArCondicionadoService {
   rpc LigarDesligar(LigarDesligarRequest) returns (StatusResponse);
   rpc Temperatura(TemperaturaRequest) returns (StatusResponse);
+  rpc ConsultarEstado(EmptyRequest) returns (ArCondicionadoEstadoResponse);
 }
 
 message LigarDesligarRequest {
@@ -38,5 +40,19 @@ message TemperaturaRequest {
   int32 temperaturaEscolhida = 1;
 }
 
+message EmptyRequest {}
 
+message LampadaEstadoResponse {
+  bool ligada = 1;
+  int32 brilho = 2;
+}
 
+message TelevisaoEstadoResponse {
+  bool ligada = 1;
+  int32 canalAtual = 2;
+}
+
+message ArCondicionadoEstadoResponse {
+  bool ligado = 1;
+  int32 temperaturaAtual = 2;
+}

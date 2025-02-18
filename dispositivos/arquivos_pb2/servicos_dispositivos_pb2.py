@@ -24,7 +24,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bservicos_dispositivos.proto\x12\x0c\x64ispositivos\"+\n\x14LigarDesligarRequest\x12\x13\n\x0binterruptor\x18\x01 \x01(\x08\" \n\x0eStatusResponse\x12\x0e\n\x06status\x18\x01 \x01(\t\"\x1f\n\rBrilhoRequest\x12\x0e\n\x06\x62rilho\x18\x01 \x01(\x05\"&\n\x0c\x43\x61nalRequest\x12\x16\n\x0e\x63\x61nalEscolhido\x18\x01 \x01(\x05\"2\n\x12TemperaturaRequest\x12\x1c\n\x14temperaturaEscolhida\x18\x01 \x01(\x05\x32\xa8\x01\n\x0eLampadaService\x12Q\n\rLigarDesligar\x12\".dispositivos.LigarDesligarRequest\x1a\x1c.dispositivos.StatusResponse\x12\x43\n\x06\x42rilho\x12\x1b.dispositivos.BrilhoRequest\x1a\x1c.dispositivos.StatusResponse2\xa8\x01\n\x10TelevisaoService\x12Q\n\rLigarDesligar\x12\".dispositivos.LigarDesligarRequest\x1a\x1c.dispositivos.StatusResponse\x12\x41\n\x05\x43\x61nal\x12\x1a.dispositivos.CanalRequest\x1a\x1c.dispositivos.StatusResponse2\xb9\x01\n\x15\x41rCondicionadoService\x12Q\n\rLigarDesligar\x12\".dispositivos.LigarDesligarRequest\x1a\x1c.dispositivos.StatusResponse\x12M\n\x0bTemperatura\x12 .dispositivos.TemperaturaRequest\x1a\x1c.dispositivos.StatusResponseb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1bservicos_dispositivos.proto\x12\x0c\x64ispositivos\"+\n\x14LigarDesligarRequest\x12\x13\n\x0binterruptor\x18\x01 \x01(\x08\" \n\x0eStatusResponse\x12\x0e\n\x06status\x18\x01 \x01(\t\"\x1f\n\rBrilhoRequest\x12\x0e\n\x06\x62rilho\x18\x01 \x01(\x05\"&\n\x0c\x43\x61nalRequest\x12\x16\n\x0e\x63\x61nalEscolhido\x18\x01 \x01(\x05\"2\n\x12TemperaturaRequest\x12\x1c\n\x14temperaturaEscolhida\x18\x01 \x01(\x05\"\x0e\n\x0c\x45mptyRequest\"7\n\x15LampadaEstadoResponse\x12\x0e\n\x06ligada\x18\x01 \x01(\x08\x12\x0e\n\x06\x62rilho\x18\x02 \x01(\x05\"=\n\x17TelevisaoEstadoResponse\x12\x0e\n\x06ligada\x18\x01 \x01(\x08\x12\x12\n\ncanalAtual\x18\x02 \x01(\x05\"H\n\x1c\x41rCondicionadoEstadoResponse\x12\x0e\n\x06ligado\x18\x01 \x01(\x08\x12\x18\n\x10temperaturaAtual\x18\x02 \x01(\x05\x32\xfc\x01\n\x0eLampadaService\x12Q\n\rLigarDesligar\x12\".dispositivos.LigarDesligarRequest\x1a\x1c.dispositivos.StatusResponse\x12\x43\n\x06\x42rilho\x12\x1b.dispositivos.BrilhoRequest\x1a\x1c.dispositivos.StatusResponse\x12R\n\x0f\x43onsultarEstado\x12\x1a.dispositivos.EmptyRequest\x1a#.dispositivos.LampadaEstadoResponse2\xfe\x01\n\x10TelevisaoService\x12Q\n\rLigarDesligar\x12\".dispositivos.LigarDesligarRequest\x1a\x1c.dispositivos.StatusResponse\x12\x41\n\x05\x43\x61nal\x12\x1a.dispositivos.CanalRequest\x1a\x1c.dispositivos.StatusResponse\x12T\n\x0f\x43onsultarEstado\x12\x1a.dispositivos.EmptyRequest\x1a%.dispositivos.TelevisaoEstadoResponse2\x94\x02\n\x15\x41rCondicionadoService\x12Q\n\rLigarDesligar\x12\".dispositivos.LigarDesligarRequest\x1a\x1c.dispositivos.StatusResponse\x12M\n\x0bTemperatura\x12 .dispositivos.TemperaturaRequest\x1a\x1c.dispositivos.StatusResponse\x12Y\n\x0f\x43onsultarEstado\x12\x1a.dispositivos.EmptyRequest\x1a*.dispositivos.ArCondicionadoEstadoResponseb\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -41,10 +41,18 @@ if not _descriptor._USE_C_DESCRIPTORS:
   _globals['_CANALREQUEST']._serialized_end=195
   _globals['_TEMPERATURAREQUEST']._serialized_start=197
   _globals['_TEMPERATURAREQUEST']._serialized_end=247
-  _globals['_LAMPADASERVICE']._serialized_start=250
-  _globals['_LAMPADASERVICE']._serialized_end=418
-  _globals['_TELEVISAOSERVICE']._serialized_start=421
-  _globals['_TELEVISAOSERVICE']._serialized_end=589
-  _globals['_ARCONDICIONADOSERVICE']._serialized_start=592
-  _globals['_ARCONDICIONADOSERVICE']._serialized_end=777
+  _globals['_EMPTYREQUEST']._serialized_start=249
+  _globals['_EMPTYREQUEST']._serialized_end=263
+  _globals['_LAMPADAESTADORESPONSE']._serialized_start=265
+  _globals['_LAMPADAESTADORESPONSE']._serialized_end=320
+  _globals['_TELEVISAOESTADORESPONSE']._serialized_start=322
+  _globals['_TELEVISAOESTADORESPONSE']._serialized_end=383
+  _globals['_ARCONDICIONADOESTADORESPONSE']._serialized_start=385
+  _globals['_ARCONDICIONADOESTADORESPONSE']._serialized_end=457
+  _globals['_LAMPADASERVICE']._serialized_start=460
+  _globals['_LAMPADASERVICE']._serialized_end=712
+  _globals['_TELEVISAOSERVICE']._serialized_start=715
+  _globals['_TELEVISAOSERVICE']._serialized_end=969
+  _globals['_ARCONDICIONADOSERVICE']._serialized_start=972
+  _globals['_ARCONDICIONADOSERVICE']._serialized_end=1248
 # @@protoc_insertion_point(module_scope)

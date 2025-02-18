@@ -44,6 +44,11 @@ class LampadaServiceStub(object):
                 request_serializer=servicos__dispositivos__pb2.BrilhoRequest.SerializeToString,
                 response_deserializer=servicos__dispositivos__pb2.StatusResponse.FromString,
                 _registered_method=True)
+        self.ConsultarEstado = channel.unary_unary(
+                '/dispositivos.LampadaService/ConsultarEstado',
+                request_serializer=servicos__dispositivos__pb2.EmptyRequest.SerializeToString,
+                response_deserializer=servicos__dispositivos__pb2.LampadaEstadoResponse.FromString,
+                _registered_method=True)
 
 
 class LampadaServiceServicer(object):
@@ -61,6 +66,12 @@ class LampadaServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ConsultarEstado(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_LampadaServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -73,6 +84,11 @@ def add_LampadaServiceServicer_to_server(servicer, server):
                     servicer.Brilho,
                     request_deserializer=servicos__dispositivos__pb2.BrilhoRequest.FromString,
                     response_serializer=servicos__dispositivos__pb2.StatusResponse.SerializeToString,
+            ),
+            'ConsultarEstado': grpc.unary_unary_rpc_method_handler(
+                    servicer.ConsultarEstado,
+                    request_deserializer=servicos__dispositivos__pb2.EmptyRequest.FromString,
+                    response_serializer=servicos__dispositivos__pb2.LampadaEstadoResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -139,6 +155,33 @@ class LampadaService(object):
             metadata,
             _registered_method=True)
 
+    @staticmethod
+    def ConsultarEstado(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dispositivos.LampadaService/ConsultarEstado',
+            servicos__dispositivos__pb2.EmptyRequest.SerializeToString,
+            servicos__dispositivos__pb2.LampadaEstadoResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
 
 class TelevisaoServiceStub(object):
     """Missing associated documentation comment in .proto file."""
@@ -159,6 +202,11 @@ class TelevisaoServiceStub(object):
                 request_serializer=servicos__dispositivos__pb2.CanalRequest.SerializeToString,
                 response_deserializer=servicos__dispositivos__pb2.StatusResponse.FromString,
                 _registered_method=True)
+        self.ConsultarEstado = channel.unary_unary(
+                '/dispositivos.TelevisaoService/ConsultarEstado',
+                request_serializer=servicos__dispositivos__pb2.EmptyRequest.SerializeToString,
+                response_deserializer=servicos__dispositivos__pb2.TelevisaoEstadoResponse.FromString,
+                _registered_method=True)
 
 
 class TelevisaoServiceServicer(object):
@@ -176,6 +224,12 @@ class TelevisaoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ConsultarEstado(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_TelevisaoServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -188,6 +242,11 @@ def add_TelevisaoServiceServicer_to_server(servicer, server):
                     servicer.Canal,
                     request_deserializer=servicos__dispositivos__pb2.CanalRequest.FromString,
                     response_serializer=servicos__dispositivos__pb2.StatusResponse.SerializeToString,
+            ),
+            'ConsultarEstado': grpc.unary_unary_rpc_method_handler(
+                    servicer.ConsultarEstado,
+                    request_deserializer=servicos__dispositivos__pb2.EmptyRequest.FromString,
+                    response_serializer=servicos__dispositivos__pb2.TelevisaoEstadoResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -254,6 +313,33 @@ class TelevisaoService(object):
             metadata,
             _registered_method=True)
 
+    @staticmethod
+    def ConsultarEstado(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dispositivos.TelevisaoService/ConsultarEstado',
+            servicos__dispositivos__pb2.EmptyRequest.SerializeToString,
+            servicos__dispositivos__pb2.TelevisaoEstadoResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
 
 class ArCondicionadoServiceStub(object):
     """Missing associated documentation comment in .proto file."""
@@ -274,6 +360,11 @@ class ArCondicionadoServiceStub(object):
                 request_serializer=servicos__dispositivos__pb2.TemperaturaRequest.SerializeToString,
                 response_deserializer=servicos__dispositivos__pb2.StatusResponse.FromString,
                 _registered_method=True)
+        self.ConsultarEstado = channel.unary_unary(
+                '/dispositivos.ArCondicionadoService/ConsultarEstado',
+                request_serializer=servicos__dispositivos__pb2.EmptyRequest.SerializeToString,
+                response_deserializer=servicos__dispositivos__pb2.ArCondicionadoEstadoResponse.FromString,
+                _registered_method=True)
 
 
 class ArCondicionadoServiceServicer(object):
@@ -291,6 +382,12 @@ class ArCondicionadoServiceServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ConsultarEstado(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_ArCondicionadoServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -303,6 +400,11 @@ def add_ArCondicionadoServiceServicer_to_server(servicer, server):
                     servicer.Temperatura,
                     request_deserializer=servicos__dispositivos__pb2.TemperaturaRequest.FromString,
                     response_serializer=servicos__dispositivos__pb2.StatusResponse.SerializeToString,
+            ),
+            'ConsultarEstado': grpc.unary_unary_rpc_method_handler(
+                    servicer.ConsultarEstado,
+                    request_deserializer=servicos__dispositivos__pb2.EmptyRequest.FromString,
+                    response_serializer=servicos__dispositivos__pb2.ArCondicionadoEstadoResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -359,6 +461,33 @@ class ArCondicionadoService(object):
             '/dispositivos.ArCondicionadoService/Temperatura',
             servicos__dispositivos__pb2.TemperaturaRequest.SerializeToString,
             servicos__dispositivos__pb2.StatusResponse.FromString,
+            options,
+            channel_credentials,
+            insecure,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+            _registered_method=True)
+
+    @staticmethod
+    def ConsultarEstado(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(
+            request,
+            target,
+            '/dispositivos.ArCondicionadoService/ConsultarEstado',
+            servicos__dispositivos__pb2.EmptyRequest.SerializeToString,
+            servicos__dispositivos__pb2.ArCondicionadoEstadoResponse.FromString,
             options,
             channel_credentials,
             insecure,
