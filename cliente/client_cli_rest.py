@@ -1,6 +1,13 @@
 import requests
+import threading
+import time
 
-API_URL = "http://localhost:5000"
+API_URL = "http://localhost:5001"
+print("executando cliente")
+
+leituras = []
+L = {"id": "", "tipo_de_leitura": "", "leitura": 0}
+listening = False
 
 def listar_dispositivos():
     response = requests.get(f"{API_URL}/dispositivos")
@@ -29,7 +36,7 @@ def consultar_estado(nome):
             print(f"{key}: {value}")
     else:
         print("Erro ao consultar estado.")
-        
+
 def ajustar_parametro(nome, parametro, valor):
     response = requests.post(f"{API_URL}/dispositivos/{nome}/{parametro}", json={parametro: valor})
     if response.status_code == 200:
@@ -37,11 +44,37 @@ def ajustar_parametro(nome, parametro, valor):
     else:
         print("Erro ao ajustar parâmetro.")
 
+def iniciar_escuta(nome):
+    global listening
+    listening = True
+
+    def escutar():
+        while listening:
+            response = requests.get(f"{API_URL}/dispositivos/{nome}/leituras")
+            if response.status_code == 200:
+                leitura = response.json()
+                print(f"Leitura recebida: {leitura}")
+            time.sleep(2)
+    
+    thread = threading.Thread(target=escutar, daemon=True)
+    thread.start()
+    print("Escutando leituras...")
+
+def parar_escuta():
+    global listening
+    listening = False
+    response = requests.post(f"{API_URL}/dispositivos/{nome}/parar_ouvir")
+    if response.status_code == 200:
+        print("Escuta interrompida.")
+    else:
+        print("Erro ao solicitar a parada da escuta.")
+
 if __name__ == '__main__':
     while True:
         dispositivos = listar_dispositivos()
         if not dispositivos:
             break
+
         escolha = int(input("Escolha um dispositivo: ")) - 1
         if escolha < 0 or escolha >= len(dispositivos):
             print("Opção inválida.")
@@ -49,6 +82,7 @@ if __name__ == '__main__':
 
         nome = dispositivos[escolha]['nome']
         tipo = dispositivos[escolha]['tipo']
+
         print("\n1) Ligar/Desligar")
         print("2) Consultar Estado")
         if tipo == "lampada":
@@ -57,7 +91,10 @@ if __name__ == '__main__':
             print("3) Ajustar Canal")
         elif tipo == "ar-condicionado":
             print("3) Ajustar Temperatura")
-        print("4) Sair")
+        print("4) Iniciar Escuta de Leituras")
+        print("5) Parar Escuta de Leituras")
+        print("6) Sair")
+
         opcao = input("Escolha uma opção: ")
 
         if opcao == "1":
@@ -75,6 +112,11 @@ if __name__ == '__main__':
                 valor = int(input("Digite a temperatura desejada (16-30°C): "))
                 ajustar_parametro(nome, "temperatura", valor)
         elif opcao == "4":
+            iniciar_escuta(nome)
+        elif opcao == "5":
+            parar_escuta()
+        elif opcao == "6":
+            parar_escuta()
             break
         else:
             print("Opção inválida.")

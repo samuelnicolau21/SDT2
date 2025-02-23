@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-from . import servicos_dispositivos_pb2 as servicos__dispositivos__pb2
+from . import servicos_dispositivos_pb2 as proto_dot_servicos__dispositivos__pb2
 
 GRPC_GENERATED_VERSION = '1.70.0'
 GRPC_VERSION = grpc.__version__
@@ -18,7 +18,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + f' but the generated code in servicos_dispositivos_pb2_grpc.py depends on'
+        + f' but the generated code in proto/servicos_dispositivos_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -36,18 +36,18 @@ class LampadaServiceStub(object):
         """
         self.LigarDesligar = channel.unary_unary(
                 '/dispositivos.LampadaService/LigarDesligar',
-                request_serializer=servicos__dispositivos__pb2.LigarDesligarRequest.SerializeToString,
-                response_deserializer=servicos__dispositivos__pb2.StatusResponse.FromString,
+                request_serializer=proto_dot_servicos__dispositivos__pb2.LigarDesligarRequest.SerializeToString,
+                response_deserializer=proto_dot_servicos__dispositivos__pb2.StatusResponse.FromString,
                 _registered_method=True)
         self.Brilho = channel.unary_unary(
                 '/dispositivos.LampadaService/Brilho',
-                request_serializer=servicos__dispositivos__pb2.BrilhoRequest.SerializeToString,
-                response_deserializer=servicos__dispositivos__pb2.StatusResponse.FromString,
+                request_serializer=proto_dot_servicos__dispositivos__pb2.BrilhoRequest.SerializeToString,
+                response_deserializer=proto_dot_servicos__dispositivos__pb2.StatusResponse.FromString,
                 _registered_method=True)
         self.ConsultarEstado = channel.unary_unary(
                 '/dispositivos.LampadaService/ConsultarEstado',
-                request_serializer=servicos__dispositivos__pb2.EmptyRequest.SerializeToString,
-                response_deserializer=servicos__dispositivos__pb2.LampadaEstadoResponse.FromString,
+                request_serializer=proto_dot_servicos__dispositivos__pb2.EmptyRequest.SerializeToString,
+                response_deserializer=proto_dot_servicos__dispositivos__pb2.LampadaEstadoResponse.FromString,
                 _registered_method=True)
 
 
@@ -77,18 +77,18 @@ def add_LampadaServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'LigarDesligar': grpc.unary_unary_rpc_method_handler(
                     servicer.LigarDesligar,
-                    request_deserializer=servicos__dispositivos__pb2.LigarDesligarRequest.FromString,
-                    response_serializer=servicos__dispositivos__pb2.StatusResponse.SerializeToString,
+                    request_deserializer=proto_dot_servicos__dispositivos__pb2.LigarDesligarRequest.FromString,
+                    response_serializer=proto_dot_servicos__dispositivos__pb2.StatusResponse.SerializeToString,
             ),
             'Brilho': grpc.unary_unary_rpc_method_handler(
                     servicer.Brilho,
-                    request_deserializer=servicos__dispositivos__pb2.BrilhoRequest.FromString,
-                    response_serializer=servicos__dispositivos__pb2.StatusResponse.SerializeToString,
+                    request_deserializer=proto_dot_servicos__dispositivos__pb2.BrilhoRequest.FromString,
+                    response_serializer=proto_dot_servicos__dispositivos__pb2.StatusResponse.SerializeToString,
             ),
             'ConsultarEstado': grpc.unary_unary_rpc_method_handler(
                     servicer.ConsultarEstado,
-                    request_deserializer=servicos__dispositivos__pb2.EmptyRequest.FromString,
-                    response_serializer=servicos__dispositivos__pb2.LampadaEstadoResponse.SerializeToString,
+                    request_deserializer=proto_dot_servicos__dispositivos__pb2.EmptyRequest.FromString,
+                    response_serializer=proto_dot_servicos__dispositivos__pb2.LampadaEstadoResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -116,8 +116,8 @@ class LampadaService(object):
             request,
             target,
             '/dispositivos.LampadaService/LigarDesligar',
-            servicos__dispositivos__pb2.LigarDesligarRequest.SerializeToString,
-            servicos__dispositivos__pb2.StatusResponse.FromString,
+            proto_dot_servicos__dispositivos__pb2.LigarDesligarRequest.SerializeToString,
+            proto_dot_servicos__dispositivos__pb2.StatusResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -143,8 +143,8 @@ class LampadaService(object):
             request,
             target,
             '/dispositivos.LampadaService/Brilho',
-            servicos__dispositivos__pb2.BrilhoRequest.SerializeToString,
-            servicos__dispositivos__pb2.StatusResponse.FromString,
+            proto_dot_servicos__dispositivos__pb2.BrilhoRequest.SerializeToString,
+            proto_dot_servicos__dispositivos__pb2.StatusResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -170,8 +170,8 @@ class LampadaService(object):
             request,
             target,
             '/dispositivos.LampadaService/ConsultarEstado',
-            servicos__dispositivos__pb2.EmptyRequest.SerializeToString,
-            servicos__dispositivos__pb2.LampadaEstadoResponse.FromString,
+            proto_dot_servicos__dispositivos__pb2.EmptyRequest.SerializeToString,
+            proto_dot_servicos__dispositivos__pb2.LampadaEstadoResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -194,18 +194,18 @@ class TelevisaoServiceStub(object):
         """
         self.LigarDesligar = channel.unary_unary(
                 '/dispositivos.TelevisaoService/LigarDesligar',
-                request_serializer=servicos__dispositivos__pb2.LigarDesligarRequest.SerializeToString,
-                response_deserializer=servicos__dispositivos__pb2.StatusResponse.FromString,
+                request_serializer=proto_dot_servicos__dispositivos__pb2.LigarDesligarRequest.SerializeToString,
+                response_deserializer=proto_dot_servicos__dispositivos__pb2.StatusResponse.FromString,
                 _registered_method=True)
         self.Canal = channel.unary_unary(
                 '/dispositivos.TelevisaoService/Canal',
-                request_serializer=servicos__dispositivos__pb2.CanalRequest.SerializeToString,
-                response_deserializer=servicos__dispositivos__pb2.StatusResponse.FromString,
+                request_serializer=proto_dot_servicos__dispositivos__pb2.CanalRequest.SerializeToString,
+                response_deserializer=proto_dot_servicos__dispositivos__pb2.StatusResponse.FromString,
                 _registered_method=True)
         self.ConsultarEstado = channel.unary_unary(
                 '/dispositivos.TelevisaoService/ConsultarEstado',
-                request_serializer=servicos__dispositivos__pb2.EmptyRequest.SerializeToString,
-                response_deserializer=servicos__dispositivos__pb2.TelevisaoEstadoResponse.FromString,
+                request_serializer=proto_dot_servicos__dispositivos__pb2.EmptyRequest.SerializeToString,
+                response_deserializer=proto_dot_servicos__dispositivos__pb2.TelevisaoEstadoResponse.FromString,
                 _registered_method=True)
 
 
@@ -235,18 +235,18 @@ def add_TelevisaoServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'LigarDesligar': grpc.unary_unary_rpc_method_handler(
                     servicer.LigarDesligar,
-                    request_deserializer=servicos__dispositivos__pb2.LigarDesligarRequest.FromString,
-                    response_serializer=servicos__dispositivos__pb2.StatusResponse.SerializeToString,
+                    request_deserializer=proto_dot_servicos__dispositivos__pb2.LigarDesligarRequest.FromString,
+                    response_serializer=proto_dot_servicos__dispositivos__pb2.StatusResponse.SerializeToString,
             ),
             'Canal': grpc.unary_unary_rpc_method_handler(
                     servicer.Canal,
-                    request_deserializer=servicos__dispositivos__pb2.CanalRequest.FromString,
-                    response_serializer=servicos__dispositivos__pb2.StatusResponse.SerializeToString,
+                    request_deserializer=proto_dot_servicos__dispositivos__pb2.CanalRequest.FromString,
+                    response_serializer=proto_dot_servicos__dispositivos__pb2.StatusResponse.SerializeToString,
             ),
             'ConsultarEstado': grpc.unary_unary_rpc_method_handler(
                     servicer.ConsultarEstado,
-                    request_deserializer=servicos__dispositivos__pb2.EmptyRequest.FromString,
-                    response_serializer=servicos__dispositivos__pb2.TelevisaoEstadoResponse.SerializeToString,
+                    request_deserializer=proto_dot_servicos__dispositivos__pb2.EmptyRequest.FromString,
+                    response_serializer=proto_dot_servicos__dispositivos__pb2.TelevisaoEstadoResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -274,8 +274,8 @@ class TelevisaoService(object):
             request,
             target,
             '/dispositivos.TelevisaoService/LigarDesligar',
-            servicos__dispositivos__pb2.LigarDesligarRequest.SerializeToString,
-            servicos__dispositivos__pb2.StatusResponse.FromString,
+            proto_dot_servicos__dispositivos__pb2.LigarDesligarRequest.SerializeToString,
+            proto_dot_servicos__dispositivos__pb2.StatusResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -301,8 +301,8 @@ class TelevisaoService(object):
             request,
             target,
             '/dispositivos.TelevisaoService/Canal',
-            servicos__dispositivos__pb2.CanalRequest.SerializeToString,
-            servicos__dispositivos__pb2.StatusResponse.FromString,
+            proto_dot_servicos__dispositivos__pb2.CanalRequest.SerializeToString,
+            proto_dot_servicos__dispositivos__pb2.StatusResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -328,8 +328,8 @@ class TelevisaoService(object):
             request,
             target,
             '/dispositivos.TelevisaoService/ConsultarEstado',
-            servicos__dispositivos__pb2.EmptyRequest.SerializeToString,
-            servicos__dispositivos__pb2.TelevisaoEstadoResponse.FromString,
+            proto_dot_servicos__dispositivos__pb2.EmptyRequest.SerializeToString,
+            proto_dot_servicos__dispositivos__pb2.TelevisaoEstadoResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -352,18 +352,18 @@ class ArCondicionadoServiceStub(object):
         """
         self.LigarDesligar = channel.unary_unary(
                 '/dispositivos.ArCondicionadoService/LigarDesligar',
-                request_serializer=servicos__dispositivos__pb2.LigarDesligarRequest.SerializeToString,
-                response_deserializer=servicos__dispositivos__pb2.StatusResponse.FromString,
+                request_serializer=proto_dot_servicos__dispositivos__pb2.LigarDesligarRequest.SerializeToString,
+                response_deserializer=proto_dot_servicos__dispositivos__pb2.StatusResponse.FromString,
                 _registered_method=True)
         self.Temperatura = channel.unary_unary(
                 '/dispositivos.ArCondicionadoService/Temperatura',
-                request_serializer=servicos__dispositivos__pb2.TemperaturaRequest.SerializeToString,
-                response_deserializer=servicos__dispositivos__pb2.StatusResponse.FromString,
+                request_serializer=proto_dot_servicos__dispositivos__pb2.TemperaturaRequest.SerializeToString,
+                response_deserializer=proto_dot_servicos__dispositivos__pb2.StatusResponse.FromString,
                 _registered_method=True)
         self.ConsultarEstado = channel.unary_unary(
                 '/dispositivos.ArCondicionadoService/ConsultarEstado',
-                request_serializer=servicos__dispositivos__pb2.EmptyRequest.SerializeToString,
-                response_deserializer=servicos__dispositivos__pb2.ArCondicionadoEstadoResponse.FromString,
+                request_serializer=proto_dot_servicos__dispositivos__pb2.EmptyRequest.SerializeToString,
+                response_deserializer=proto_dot_servicos__dispositivos__pb2.ArCondicionadoEstadoResponse.FromString,
                 _registered_method=True)
 
 
@@ -393,18 +393,18 @@ def add_ArCondicionadoServiceServicer_to_server(servicer, server):
     rpc_method_handlers = {
             'LigarDesligar': grpc.unary_unary_rpc_method_handler(
                     servicer.LigarDesligar,
-                    request_deserializer=servicos__dispositivos__pb2.LigarDesligarRequest.FromString,
-                    response_serializer=servicos__dispositivos__pb2.StatusResponse.SerializeToString,
+                    request_deserializer=proto_dot_servicos__dispositivos__pb2.LigarDesligarRequest.FromString,
+                    response_serializer=proto_dot_servicos__dispositivos__pb2.StatusResponse.SerializeToString,
             ),
             'Temperatura': grpc.unary_unary_rpc_method_handler(
                     servicer.Temperatura,
-                    request_deserializer=servicos__dispositivos__pb2.TemperaturaRequest.FromString,
-                    response_serializer=servicos__dispositivos__pb2.StatusResponse.SerializeToString,
+                    request_deserializer=proto_dot_servicos__dispositivos__pb2.TemperaturaRequest.FromString,
+                    response_serializer=proto_dot_servicos__dispositivos__pb2.StatusResponse.SerializeToString,
             ),
             'ConsultarEstado': grpc.unary_unary_rpc_method_handler(
                     servicer.ConsultarEstado,
-                    request_deserializer=servicos__dispositivos__pb2.EmptyRequest.FromString,
-                    response_serializer=servicos__dispositivos__pb2.ArCondicionadoEstadoResponse.SerializeToString,
+                    request_deserializer=proto_dot_servicos__dispositivos__pb2.EmptyRequest.FromString,
+                    response_serializer=proto_dot_servicos__dispositivos__pb2.ArCondicionadoEstadoResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -432,8 +432,8 @@ class ArCondicionadoService(object):
             request,
             target,
             '/dispositivos.ArCondicionadoService/LigarDesligar',
-            servicos__dispositivos__pb2.LigarDesligarRequest.SerializeToString,
-            servicos__dispositivos__pb2.StatusResponse.FromString,
+            proto_dot_servicos__dispositivos__pb2.LigarDesligarRequest.SerializeToString,
+            proto_dot_servicos__dispositivos__pb2.StatusResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -459,8 +459,8 @@ class ArCondicionadoService(object):
             request,
             target,
             '/dispositivos.ArCondicionadoService/Temperatura',
-            servicos__dispositivos__pb2.TemperaturaRequest.SerializeToString,
-            servicos__dispositivos__pb2.StatusResponse.FromString,
+            proto_dot_servicos__dispositivos__pb2.TemperaturaRequest.SerializeToString,
+            proto_dot_servicos__dispositivos__pb2.StatusResponse.FromString,
             options,
             channel_credentials,
             insecure,
@@ -486,8 +486,8 @@ class ArCondicionadoService(object):
             request,
             target,
             '/dispositivos.ArCondicionadoService/ConsultarEstado',
-            servicos__dispositivos__pb2.EmptyRequest.SerializeToString,
-            servicos__dispositivos__pb2.ArCondicionadoEstadoResponse.FromString,
+            proto_dot_servicos__dispositivos__pb2.EmptyRequest.SerializeToString,
+            proto_dot_servicos__dispositivos__pb2.ArCondicionadoEstadoResponse.FromString,
             options,
             channel_credentials,
             insecure,

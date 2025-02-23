@@ -53,6 +53,6 @@ message TelevisaoEstadoResponse {
 }
 
 message ArCondicionadoEstadoResponse {
-  bool ligado = 1;
-  int32 temperaturaAtual = 2;
+    bool ligado = 1;
+    float temperaturaAtual = 2;  // Alterado para float
 }
